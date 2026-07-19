@@ -20,5 +20,14 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
+        
     - name: Execute test automation framework
       run: mvn clean test -DsuiteXmlFile=testng.xml -Denv=QA
+
+    - name: Upload a Build Artifact
+      if: always()
+      uses: actions/upload-artifact@v7.0.1
+      with:
+        name: Surefire Reports
+        path: target/surefire-reports/
+        retention-days: 10
