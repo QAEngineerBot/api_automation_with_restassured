@@ -8,7 +8,7 @@ import java.util.Properties;
 public class ConfigManager {
 
     private static Properties prop = new Properties();
-    private static String filePath = "config/config.properties";
+    private static String filePath;
     private static String env;
 
     static {

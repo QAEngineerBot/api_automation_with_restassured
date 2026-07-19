@@ -1,16 +1,13 @@
 package com.api.tests;
 
-import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
-
 import org.testng.annotations.Test;
 
-import static com.api.constants.Roles.*;
+import static com.api.constants.Roles.FD;
+import static com.api.utils.AuthTokenProvider.getToken;
+import static com.api.utils.ConfigManager.getProperty;
 
-import static com.api.utils.AuthTokenProvider.*;
-
-import static com.api.utils.ConfigManager.*;
-
+import static io.restassured.RestAssured.given;
 import io.restassured.http.ContentType;
 import io.restassured.http.Header;
 import io.restassured.module.jsv.JsonSchemaValidator;
@@ -28,6 +25,8 @@ public class UserDetailsAPITest {
                 .accept(ContentType.JSON)
                 .and()
                 .header(header)
+                .log().uri()
+                .log().method()
                 .when()
                 .get("userdetails")
                 .then()
