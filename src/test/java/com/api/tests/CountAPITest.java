@@ -1,6 +1,7 @@
 package com.api.tests;
 
 import static org.hamcrest.Matchers.blankOrNullString;
+import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.everyItem;
 import static org.hamcrest.Matchers.greaterThanOrEqualTo;
@@ -39,6 +40,7 @@ public class CountAPITest {
                 .body("data.size()", equalTo(3))
                 .body("data.count", everyItem(greaterThanOrEqualTo(0)))
                 .body("data.label", everyItem(not(blankOrNullString())))
+                .body("data.key", containsInAnyOrder("pending_for_delivery", "created_today", "pending_fst_assignment"))
                 .body(JsonSchemaValidator.matchesJsonSchemaInClasspath("response-schema/CountResponseSchema.json"));
     }
 
