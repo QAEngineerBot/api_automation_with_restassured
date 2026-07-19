@@ -20,8 +20,6 @@ on:
         default: qa
         required: true
 
-   workflow_dispatch:
-    inputs:
       suiteXmlFile :
         description: "TestNG XML file"
         type: choice
@@ -30,7 +28,7 @@ on:
           - smoke.xml
           - regression.xml
         default: testng.xml
-        required: true     
+        required: true       
 
 jobs:
   build:
