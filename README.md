@@ -1,2 +1,2 @@
 #commands
-1. mvn clean test -DsuiteXmlFile=testng.xml -Denv=qa
+- mvn clean test -DsuiteXmlFile=testng.xml -Denv=qa

@@ -4,14 +4,14 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.everyItem;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.hasKey;
-import static org.hamcrest.Matchers.lessThan;
 import static org.hamcrest.Matchers.notNullValue;
 import org.testng.annotations.Test;
 
-import com.api.constants.Roles;
-import com.api.utils.AuthTokenProvider;
-import com.api.utils.ConfigManager;
-import static com.api.utils.ConfigManager.getProperty;
+import static com.api.constants.Roles.FD;
+import static com.api.utils.SpecUtils.requestSpec;
+import static com.api.utils.SpecUtils.requestSpecWithAuth;
+import static com.api.utils.SpecUtils.successResponseSpec;
+import static com.api.utils.SpecUtils.unAuthorizedResponseSpec;
 
 import static io.restassured.RestAssured.given;
 
@@ -20,20 +20,12 @@ public class MasterAPITest {
     @Test
     public void verifyMasterApi() {
         given()
-                .baseUri(ConfigManager.getProperty("BASE_URI"))
-                .and()
-                .header("Authorization", AuthTokenProvider.getToken(Roles.FD))
-                .and()
+                .spec(requestSpecWithAuth(FD))
                 .contentType("")
-                .log().headers()
-                .log().method()
                 .when()
                 .post("master")
                 .then()
-                .log().body()
-                .log().ifValidationFails()
-                .statusCode(200)
-                .time(lessThan(1000L))
+                .spec(successResponseSpec())
                 .body("$", hasKey("message"))
                 .body("message", equalTo("Success"))
                 .body("$", hasKey("data"))
@@ -48,13 +40,10 @@ public class MasterAPITest {
     @Test
     public void verifyMasterApiWithInvalidToken() {
         given()
-                .baseUri(getProperty("BASE_URI"))
-                .contentType("")
-                .headers("Authorization", "")
+                .spec(requestSpec())
                 .when()
                 .post("master")
                 .then()
-                .log().body()
-                .statusCode(401);
+                .spec(unAuthorizedResponseSpec());
     }
 }

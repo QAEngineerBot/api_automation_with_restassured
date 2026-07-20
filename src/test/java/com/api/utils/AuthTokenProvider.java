@@ -20,21 +20,27 @@ public class AuthTokenProvider {
 
         UserLoginCredentials userCreds = null;
 
-        if (role == FD) {
-            userCreds = new UserLoginCredentials("iamfd", "password");
-        } else if (role == SUP) {
-            userCreds = new UserLoginCredentials("iamsup", "password");
-        } else if (role == ENG) {
-            userCreds = new UserLoginCredentials("iameng", "password");
-        } else if (role == QC) {
-            userCreds = new UserLoginCredentials("iamqc", "password");
+        if (role != null) {
+            switch (role) {
+                case FD ->
+                    userCreds = new UserLoginCredentials("iamfd", "password");
+
+                case SUP ->
+                    userCreds = new UserLoginCredentials("iamsup", "password");
+
+                case ENG ->
+                    userCreds = new UserLoginCredentials("iameng", "password");
+
+                case QC ->
+                    userCreds = new UserLoginCredentials("iamqc", "password");
+                default ->
+                    userCreds = new UserLoginCredentials("iamfd", "password");
+            }
         }
 
-        String token = given().baseUri(ConfigManager.getProperty("BASE_URI")).contentType(ContentType.JSON)
+        return given().baseUri(ConfigManager.getProperty("BASE_URI")).contentType(ContentType.JSON)
                 .body(userCreds).post("login").then().log().ifValidationFails().statusCode(200).extract().body()
                 .jsonPath().getString("data.token");
-
-        return token;
 
     }
 

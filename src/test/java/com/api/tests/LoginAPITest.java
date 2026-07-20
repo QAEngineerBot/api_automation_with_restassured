@@ -1,41 +1,28 @@
 package com.api.tests;
 
-import static io.restassured.RestAssured.given;
-import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 import static org.hamcrest.Matchers.equalTo;
-
-import java.io.IOException;
-
 import org.testng.annotations.Test;
 
 import com.api.pojo.UserLoginCredentials;
-import static com.api.utils.ConfigManager.*;
+import static com.api.utils.ConfigManager.getProperty;
+import static com.api.utils.SpecUtils.*;
 
-import io.restassured.http.ContentType;
+import static io.restassured.RestAssured.given;
+import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 
 public class LoginAPITest {
 
     @Test
-    public void loginAPITest() throws IOException {
+    public void loginAPITest() {
 
         UserLoginCredentials userCred = new UserLoginCredentials("iamfd", "password");
 
         given().baseUri(getProperty("BASE_URI"))
-                .and().contentType(ContentType.JSON)
-                .and()
-                .accept(ContentType.JSON)
-                .and().body(userCred)
-                .and()
-                .log().uri()
-                .log().headers()
-                .log().method()
-                .log().body()
+                .spec(requestSpec(userCred))
                 .when().post("login")
-                .then().log().body()
-                .and()
+                .then()
+                .spec(successResponseSpec())
                 .log().ifValidationFails()
-                .and()
-                .statusCode(200)
                 .and()
                 .body("message", equalTo("Success"))
                 .and()
