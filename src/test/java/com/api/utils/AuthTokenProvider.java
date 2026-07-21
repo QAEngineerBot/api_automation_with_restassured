@@ -5,7 +5,7 @@ import static com.api.constants.Roles.ENG;
 import static com.api.constants.Roles.FD;
 import static com.api.constants.Roles.QC;
 import static com.api.constants.Roles.SUP;
-import com.api.pojo.UserLoginCredentials;
+import com.api.pojo.LoginApiRequest;
 
 import static io.restassured.RestAssured.given;
 import io.restassured.http.ContentType;
@@ -18,23 +18,23 @@ public class AuthTokenProvider {
 
     public static String getToken(Roles role) {
 
-        UserLoginCredentials userCreds = null;
+        LoginApiRequest userCreds = null;
 
         if (role != null) {
             switch (role) {
                 case FD ->
-                    userCreds = new UserLoginCredentials("iamfd", "password");
+                    userCreds = new LoginApiRequest("iamfd", "password");
 
                 case SUP ->
-                    userCreds = new UserLoginCredentials("iamsup", "password");
+                    userCreds = new LoginApiRequest("iamsup", "password");
 
                 case ENG ->
-                    userCreds = new UserLoginCredentials("iameng", "password");
+                    userCreds = new LoginApiRequest("iameng", "password");
 
                 case QC ->
-                    userCreds = new UserLoginCredentials("iamqc", "password");
+                    userCreds = new LoginApiRequest("iamqc", "password");
                 default ->
-                    userCreds = new UserLoginCredentials("iamfd", "password");
+                    userCreds = new LoginApiRequest("iamfd", "password");
             }
         }
 

@@ -4,8 +4,9 @@
     <artifactId>ApiAutomation</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <properties>
-        <maven.compiler.source>14</maven.compiler.source>
-        <maven.compiler.target>14</maven.compiler.target>
+        <maven.compiler.source>15</maven.compiler.source>
+        <maven.compiler.target>15</maven.compiler.target>
+        <suiteXmlFile>testng.xml</suiteXmlFile>
     </properties>
     <build>
         <plugins>

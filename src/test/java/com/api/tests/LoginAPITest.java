@@ -3,7 +3,7 @@ package com.api.tests;
 import static org.hamcrest.Matchers.equalTo;
 import org.testng.annotations.Test;
 
-import com.api.pojo.UserLoginCredentials;
+import com.api.pojo.LoginApiRequest;
 import static com.api.utils.ConfigManager.getProperty;
 import static com.api.utils.SpecUtils.*;
 
@@ -15,7 +15,7 @@ public class LoginAPITest {
     @Test
     public void loginAPITest() {
 
-        UserLoginCredentials userCred = new UserLoginCredentials("iamfd", "password");
+        LoginApiRequest userCred = new LoginApiRequest("iamfd", "password");
 
         given().baseUri(getProperty("BASE_URI"))
                 .spec(requestSpec(userCred))

@@ -1,11 +1,11 @@
 package com.api.pojo;
 
-public class UserLoginCredentials {
+public class LoginApiRequest {
 
 	private String username;
 	private String password;
 
-	public UserLoginCredentials(String username, String password) {
+	public LoginApiRequest(String username, String password) {
 		super();
 		this.username = username;
 		this.password = password;
