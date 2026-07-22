@@ -12,7 +12,7 @@ import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
 
-public class SpecUtils {
+public class SpecUtil {
 
     public static RequestSpecification requestSpec() {
         return new RequestSpecBuilder().setBaseUri(getProperty("BASE_URI"))
