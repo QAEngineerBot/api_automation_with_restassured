@@ -4,11 +4,12 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import com.api.constants.Roles;
-import com.api.pojo.CreateJobApiRequest;
-import com.api.pojo.Customer;
-import com.api.pojo.CustomerAddress;
-import com.api.pojo.CustomerProduct;
-import com.api.pojo.Problems;
+import com.api.request.model.CreateJobApiRequest;
+import com.api.request.model.Customer;
+import com.api.request.model.CustomerAddress;
+import com.api.request.model.CustomerProduct;
+import com.api.request.model.Problems;
+import static com.api.utils.DateTimeUtil.*;
 import com.api.utils.SpecUtil;
 
 import io.qameta.allure.Description;
@@ -31,8 +32,8 @@ public class CreateJobAPITest {
     Customer customer = new Customer("John", "Doe", "7637483748", "", "john123@gmail.com", "");
     CustomerAddress customerAddress = new CustomerAddress("1", "AG", "MG", "PG", "pune", "411052", "India",
             "Maharashtra");
-    CustomerProduct customerProduct = new CustomerProduct("2025-09-23T18:30:00.000Z", "12349846994846",
-            "12349846994846", "12349846994846", "2025-09-23T18:30:00.000Z", 3, 3);
+    CustomerProduct customerProduct = new CustomerProduct(getTimeWithDaysAgo(10), "12349846994846",
+            "12349846994846", "12349846994846", getTimeWithDaysAgo(10), 3, 3);
     Problems problems = new Problems(1, "Battery issue");
     List<Problems> problemsList = new ArrayList<Problems>();
     CreateJobApiRequest createJobApiRequest = new CreateJobApiRequest(0, 2, 1, 2, customer, customerAddress,

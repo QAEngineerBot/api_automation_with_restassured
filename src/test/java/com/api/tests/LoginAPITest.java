@@ -5,7 +5,7 @@ import static org.hamcrest.Matchers.equalTo;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-import com.api.pojo.LoginApiRequest;
+import com.api.request.model.LoginApiRequest;
 
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;

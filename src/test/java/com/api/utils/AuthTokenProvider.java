@@ -1,12 +1,12 @@
 package com.api.utils;
 
 import com.api.constants.Roles;
+import com.api.request.model.LoginApiRequest;
+
 import static com.api.constants.Roles.ENG;
 import static com.api.constants.Roles.FD;
 import static com.api.constants.Roles.QC;
 import static com.api.constants.Roles.SUP;
-import com.api.pojo.LoginApiRequest;
-
 import static io.restassured.RestAssured.given;
 import io.restassured.http.ContentType;
 
