@@ -32,7 +32,7 @@ public class MasterAPITest {
     @Story("Verify Master API with valid token")
     @Description("This test verifies the Master API with a valid token and checks the response against the expected schema.")
     @Severity(SeverityLevel.NORMAL)
-    @Test
+    @Test(groups = {"api","smoke","regression"})
     public void verifyMasterApi() {
         given()
                 .spec(requestSpecWithAuth(FD))

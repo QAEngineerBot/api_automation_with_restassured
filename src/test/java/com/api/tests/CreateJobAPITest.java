@@ -1,5 +1,6 @@
 package com.api.tests;
 
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
@@ -29,23 +30,29 @@ import java.util.List;
 @Listeners(com.listeners.ApiTestListener.class)
 public class CreateJobAPITest {
 
-    Customer customer = new Customer("John", "Doe", "7637483748", "", "john123@gmail.com", "");
-    CustomerAddress customerAddress = new CustomerAddress("1", "AG", "MG", "PG", "pune", "411052", "India",
-            "Maharashtra");
-    CustomerProduct customerProduct = new CustomerProduct(getTimeWithDaysAgo(10), "12349846994846",
-            "12349846994846", "12349846994846", getTimeWithDaysAgo(10), 3, 3);
-    Problems problems = new Problems(1, "Battery issue");
-    List<Problems> problemsList = new ArrayList<Problems>();
-    CreateJobApiRequest createJobApiRequest = new CreateJobApiRequest(0, 2, 1, 2, customer, customerAddress,
-            customerProduct, problemsList);
+    CreateJobApiRequest createJobApiRequest;
+
+    @Description("Creating payload for create job api")
+    @BeforeMethod
+    public void setUp() {
+        Customer customer = new Customer("John", "Doe", "7637483748", "", "john123@gmail.com", "");
+        CustomerAddress customerAddress = new CustomerAddress("1", "AG", "MG", "PG", "pune", "411052", "India",
+                "Maharashtra");
+        CustomerProduct customerProduct = new CustomerProduct(getTimeWithDaysAgo(10), "12349846994846",
+                "12349846994846", "12349846994846", getTimeWithDaysAgo(10), 3, 3);
+        Problems problems = new Problems(1, "Battery issue");
+        List<Problems> problemsList = new ArrayList<Problems>();
+        problemsList.add(problems);
+
+        createJobApiRequest = new CreateJobApiRequest(0, 2, 1, 2, customer, customerAddress,
+                customerProduct, problemsList);
+    }
 
     @Story("Verify Create Job API with valid token")
     @Description("This test verifies the Create Job API with a valid token and checks the response against the expected schema.")
     @Severity(SeverityLevel.BLOCKER)
-    @Test
+    @Test(groups = { "api", "smoke", "regression" })
     public void verifyCreateJobApi() {
-
-        problemsList.add(problems);
 
         given().spec(SpecUtil.requestSpec(Roles.FD, createJobApiRequest))
                 .when()

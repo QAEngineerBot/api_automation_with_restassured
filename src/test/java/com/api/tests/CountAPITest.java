@@ -7,6 +7,8 @@ import static org.hamcrest.Matchers.everyItem;
 import static org.hamcrest.Matchers.greaterThanOrEqualTo;
 import static org.hamcrest.Matchers.not;
 import static org.hamcrest.Matchers.notNullValue;
+
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import com.api.constants.Roles;
@@ -27,12 +29,13 @@ import io.restassured.module.jsv.JsonSchemaValidator;
 
 @Epic("Job Management")
 @Feature("Count API")
+@Listeners(com.listeners.ApiTestListener.class)
 public class CountAPITest {
 
     @Story("Verify Count API with valid token")
     @Description("This test verifies the Count API with a valid token and checks the response against the expected schema.")
     @Severity(SeverityLevel.NORMAL)
-    @Test
+    @Test(groups = {"api","smoke","regression"})
     public void verifyCountApi() {
         given()
                 .spec(requestSpecWithAuth(Roles.FD))
@@ -53,7 +56,7 @@ public class CountAPITest {
     @Story("Verify Count API without token")
     @Description("This test verifies the Count API without token and checks the response code against the expected")
     @Severity(SeverityLevel.NORMAL)
-    @Test
+    @Test(groups = {"api","smoke","regression"})
     public void verifyCountApiWithMissingAuth() {
         given()
                 .spec(requestSpec())

@@ -26,7 +26,7 @@ public class UserDetailsAPITest {
     @Story("Verify User Details API with valid token")
     @Description("This test verifies the user details API with a valid token and checks the response against the expected schema.")
     @Severity(SeverityLevel.CRITICAL)
-    @Test
+    @Test(groups = {"api","smoke","regression"})
     public void userDetailsAPITest() {
 
         given()

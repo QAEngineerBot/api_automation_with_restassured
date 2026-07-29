@@ -19,8 +19,7 @@ public class AllureEnvWriterUtil {
         prop.setProperty("Operating System", System.getProperty("os.name"));
         prop.setProperty("Os Version", System.getProperty("os.version"));
         prop.setProperty("Java Version", System.getProperty("java.version"));
-        
-        
+
         try {
             FileWriter writer = new FileWriter(folderPath + "/environment.properties");
             prop.store(writer, "Environment Properties");

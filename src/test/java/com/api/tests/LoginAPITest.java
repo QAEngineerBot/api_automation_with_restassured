@@ -2,6 +2,7 @@ package com.api.tests;
 
 import static org.hamcrest.Matchers.equalTo;
 
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
@@ -25,16 +26,22 @@ import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInC
 @Listeners(com.listeners.ApiTestListener.class)
 public class LoginAPITest {
 
+    LoginApiRequest userCred;
+
+    @Description("creating payload for Login api")
+    @BeforeMethod
+    public void setUp() {
+        userCred = new LoginApiRequest("iamfd", "password");
+
+    }
+
     @Story("Verify Login API with valid credentials")
     @Description("This test verifies the login API with valid credentials and checks the response against the expected schema.")
     @Severity(SeverityLevel.BLOCKER)
-    @Test
+    @Test(groups = { "api", "smoke", "regression" })
     public void loginAPITest() {
 
-        LoginApiRequest userCred = new LoginApiRequest("iamfd", "password");
-
-        given().baseUri(getProperty("BASE_URI"))
-                .spec(requestSpec(userCred))
+        given().spec(requestSpec(userCred))
                 .when().post("login")
                 .then()
                 .spec(successResponseSpec())
