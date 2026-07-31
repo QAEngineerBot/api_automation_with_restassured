@@ -1,6 +1,7 @@
 package com.api.request.model;
 
-public record CustomerProduct( String dop,
+public record CustomerProduct( 
+     String dop,
      String serial_number,
      String imei1,
      String imei2,
