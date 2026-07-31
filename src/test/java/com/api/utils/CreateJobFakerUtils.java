@@ -60,10 +60,11 @@ public class CreateJobFakerUtils {
 
 	private static List<Problems> generateFakeProblemsPayload() {
 		int count = RANDOM.nextInt(3) + 1;
-		int index = RANDOM.nextInt(VALID_PROBLEM_ID.length);
+		int index;
 		List<Problems> list = new ArrayList<Problems>();
 		Problems problem;
 		for (int i = 1; i <= count; i++) {
+			index = RANDOM.nextInt(VALID_PROBLEM_ID.length);
 			problem = new Problems(VALID_PROBLEM_ID[index], FAKER.lorem().sentence(3));
 			list.add(problem);
 		}
