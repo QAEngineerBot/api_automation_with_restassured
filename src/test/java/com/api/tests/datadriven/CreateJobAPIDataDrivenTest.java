@@ -26,7 +26,7 @@ public class CreateJobAPIDataDrivenTest {
 	@Description("This test verifies the Create Job API with a valid token and checks the response against the expected schema.")
 	@Severity(SeverityLevel.BLOCKER)
 	@Test(groups = { "api", "smoke",
-			"regression" }, dataProviderClass = com.dataproviders.DataProviderUtils.class, dataProvider = "CreateJobDataProvider")
+			"regression" }, dataProviderClass = com.dataproviders.DataProviderUtils.class, dataProvider = "CreateJobFakerDataProvider")
 	public void verifyCreateJobApi(CreateJobApiRequest createJobApiRequest) {
 		given().spec(SpecUtil.requestSpec(Roles.FD, createJobApiRequest)).when().post("job/create").then()
 				.spec(SpecUtil.successResponseSpec());
