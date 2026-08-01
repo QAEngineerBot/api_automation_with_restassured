@@ -3,6 +3,7 @@ package com.api.utils;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 import java.util.Random;
 
 import com.api.request.model.CreateJobApiRequest;
@@ -14,7 +15,7 @@ import com.github.javafaker.Faker;
 
 public class CreateJobFakerUtils {
 
-	private final static Faker FAKER = new Faker();
+	private final static Faker FAKER = new Faker(new Locale("en-INDIA"));
 	private final static String COUNTRY = "India";
 	private final static int PRODUCT_ID = 3;
 	private final static int MST_MODEL_ID = 3;
@@ -37,8 +38,7 @@ public class CreateJobFakerUtils {
 	}
 
 	public static Iterator<CreateJobApiRequest> generateFakeCreateJobPayload(int count) {
-		String fakerCount = System.getProperty("fakerCount",String.valueOf(count));
-		count = Integer.parseInt(fakerCount);
+
 		List<CreateJobApiRequest> createJobApiPayloadList = new ArrayList<CreateJobApiRequest>();
 		Customer customer;
 		CustomerAddress customerAddress;

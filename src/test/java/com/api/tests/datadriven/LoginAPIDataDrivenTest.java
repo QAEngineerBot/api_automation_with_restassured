@@ -31,9 +31,9 @@ public class LoginAPIDataDrivenTest {
 	@Description("This test verifies the login API with valid credentials and checks the response against the expected schema.")
 	@Severity(SeverityLevel.BLOCKER)
 	@Test(groups = { "api", "smoke",
-			"regression" }, dataProviderClass = com.dataproviders.DataProviderUtils.class, dataProvider = "LoginDataProvider")
-	public void loginAPITest(LoginRequestBean loginRequestBean) {
-		given().spec(requestSpec(loginRequestBean)).when().post("login").then().spec(successResponseSpec()).log()
+			"regression" }, dataProviderClass = com.dataproviders.DataProviderUtils.class, dataProvider = "LoginJsonDataProvider")
+	public void loginAPITest(LoginApiRequest loginApiRequest) {
+		given().spec(requestSpec(loginApiRequest)).when().post("login").then().spec(successResponseSpec()).log()
 				.ifValidationFails().and().body("message", equalTo("Success")).and()
 				.body(matchesJsonSchemaInClasspath("response-schema/LoginResponseSchema.json"));
 	}
