@@ -7,10 +7,13 @@ import java.util.List;
 import org.testng.annotations.DataProvider;
 
 import com.api.request.model.CreateJobApiRequest;
+import com.api.request.model.LoginApiRequest;
+
 import static com.api.utils.CreateJobAPIMapper.*;
 
 import com.api.utils.CreateJobFakerUtils;
 import com.api.utils.CsvFileReaderUtil;
+import com.api.utils.JsonFileReaderUtil;
 import com.data.beans.CreateJobBean;
 import com.data.beans.LoginRequestBean;
 
@@ -19,6 +22,11 @@ public class DataProviderUtils {
 	@DataProvider(name = "LoginDataProvider",parallel = true)
 	public static Iterator<LoginRequestBean> loginApiDataProvider() {
 		return CsvFileReaderUtil.loadCsv("test-data/LoginCreds.csv",LoginRequestBean.class);
+	}
+	
+	@DataProvider(name = "LoginJsonDataProvider",parallel = true)
+	public static Iterator<LoginApiRequest> loginApiJsonDataProvider() {
+		return JsonFileReaderUtil.loadJson("test-data/LoginCreds.json",LoginApiRequest[].class);
 	}
 	
 	@DataProvider(name = "CreateJobDataProvider",parallel = true)
@@ -36,7 +44,9 @@ public class DataProviderUtils {
 	
 	@DataProvider(name = "CreateJobFakerDataProvider",parallel = true)
 	public static Iterator<CreateJobApiRequest> createJobApiFakerDataProvider() {
-		return CreateJobFakerUtils.generateFakeCreateJobPayload(10);
+		String fakerCount = System.getProperty("fakerCount","10");
+		int count = Integer.parseInt(fakerCount);
+		return CreateJobFakerUtils.generateFakeCreateJobPayload(count);
 	}
 
 }
