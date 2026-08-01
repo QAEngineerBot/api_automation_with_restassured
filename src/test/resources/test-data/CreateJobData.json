@@ -1,0 +1,119 @@
+[
+	{
+	    "mst_service_location_id": 0,
+	    "mst_platform_id": 2,
+	    "mst_warrenty_status_id": 1,
+	    "mst_oem_id": 2,
+	    "customer": {
+	        "first_name":  "{{first_name}}",                     
+	        "last_name":  "{{last_name}}" ,                         
+	        "mobile_number": "{{mobile_number}}",            
+	        "mobile_number_alt": "",
+	        "email_id": "sonawaneom617@gmail.com",
+	        "email_id_alt": "sonawaneom617@gmail.com"
+	    },
+	    "customer_address": {
+	        "flat_number": "1",
+	        "apartment_name": "AG",
+	        "street_name": "MG",
+	        "landmark": "PG",
+	        "area": "pune",
+	        "pincode": "411052",
+	        "country": "India",
+	        "state": "Maharashtra"
+	    },
+	    "customer_product": {
+	        "dop": "2025-09-23T18:30:00.000Z",
+	        "serial_number": "17222175218643",
+	        "imei1": "17222175218643",
+	        "imei2": "17222175218643",
+	        "popurl": "2025-09-23T18:30:00.000Z",
+	        "product_id": 3,
+	        "mst_model_id": 3
+	    },
+	    "problems": [
+	        {
+	            "id": 6,
+	            "remark": "gyu"
+	        }
+	    ]
+	},
+	{
+	    "mst_service_location_id": 0,
+	    "mst_platform_id": 2,
+	    "mst_warrenty_status_id": 1,
+	    "mst_oem_id": 2,
+	    "customer": {
+	        "first_name":  "{{first_name}}",                     
+	        "last_name":  "{{last_name}}" ,                         
+	        "mobile_number": "{{mobile_number}}",            
+	        "mobile_number_alt": "",
+	        "email_id": "sonawaneom617@gmail.com",
+	        "email_id_alt": "sonawaneom617@gmail.com"
+	    },
+	    "customer_address": {
+	        "flat_number": "1",
+	        "apartment_name": "AG",
+	        "street_name": "MG",
+	        "landmark": "PG",
+	        "area": "pune",
+	        "pincode": "411052",
+	        "country": "India",
+	        "state": "Maharashtra"
+	    },
+	    "customer_product": {
+	        "dop": "2025-09-23T18:30:00.000Z",
+	        "serial_number": "17222175218973",
+	        "imei1": "17222175218973",
+	        "imei2": "17222175218973",
+	        "popurl": "2025-09-23T18:30:00.000Z",
+	        "product_id": 3,
+	        "mst_model_id": 3
+	    },
+	    "problems": [
+	        {
+	            "id": 6,
+	            "remark": "gyu"
+	        }
+	    ]
+	},
+	{
+	    "mst_service_location_id": 0,
+	    "mst_platform_id": 2,
+	    "mst_warrenty_status_id": 1,
+	    "mst_oem_id": 2,
+	    "customer": {
+	        "first_name":  "{{first_name}}",                     
+	        "last_name":  "{{last_name}}" ,                         
+	        "mobile_number": "{{mobile_number}}",            
+	        "mobile_number_alt": "",
+	        "email_id": "sonawaneom617@gmail.com",
+	        "email_id_alt": "sonawaneom617@gmail.com"
+	    },
+	    "customer_address": {
+	        "flat_number": "1",
+	        "apartment_name": "AG",
+	        "street_name": "MG",
+	        "landmark": "PG",
+	        "area": "pune",
+	        "pincode": "411052",
+	        "country": "India",
+	        "state": "Maharashtra"
+	    },
+	    "customer_product": {
+	        "dop": "2025-09-23T18:30:00.000Z",
+	        "serial_number": "18222175218627",
+	        "imei1": "18222175218627",
+	        "imei2": "18222175218627",
+	        "popurl": "2025-09-23T18:30:00.000Z",
+	        "product_id": 3,
+	        "mst_model_id": 3
+	    },
+	    "problems": [
+	        {
+	            "id": 6,
+	            "remark": "gyu"
+	        }
+	    ]
+	}
+]
