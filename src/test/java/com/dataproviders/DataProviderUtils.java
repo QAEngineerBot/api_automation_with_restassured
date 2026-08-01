@@ -29,6 +29,11 @@ public class DataProviderUtils {
 		return JsonFileReaderUtil.loadJson("test-data/LoginCreds.json",LoginApiRequest[].class);
 	}
 	
+	@DataProvider(name = "CreateJobJsonDataProvider",parallel = true)
+	public static Iterator<CreateJobApiRequest> CreateJobJsonDataProvider() {
+		return JsonFileReaderUtil.loadJson("test-data/CreateJobData.json",CreateJobApiRequest[].class);
+	}
+	
 	@DataProvider(name = "CreateJobDataProvider",parallel = true)
 	public static Iterator<CreateJobApiRequest> createJobApiDataProvider() {
 		Iterator<CreateJobBean> createJobBean=CsvFileReaderUtil.loadCsv("test-data/CreateJob.csv", CreateJobBean.class);
