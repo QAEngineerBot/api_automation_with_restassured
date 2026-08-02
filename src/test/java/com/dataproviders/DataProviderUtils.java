@@ -13,6 +13,7 @@ import static com.api.utils.CreateJobAPIMapper.*;
 
 import com.api.utils.CreateJobFakerUtils;
 import com.api.utils.CsvFileReaderUtil;
+import com.api.utils.ExcelFileReaderUtil;
 import com.api.utils.JsonFileReaderUtil;
 import com.data.beans.CreateJobBean;
 import com.data.beans.LoginRequestBean;
@@ -27,6 +28,11 @@ public class DataProviderUtils {
 	@DataProvider(name = "LoginJsonDataProvider",parallel = true)
 	public static Iterator<LoginApiRequest> loginApiJsonDataProvider() {
 		return JsonFileReaderUtil.loadJson("test-data/LoginCreds.json",LoginApiRequest[].class);
+	}
+	
+	@DataProvider(name = "LoginExcelDataProvider",parallel = true)
+	public static Iterator<LoginRequestBean> loginApiExcelDataProvider() {
+		return ExcelFileReaderUtil.loadExcel("test-data/LoginCreds.xlsx","LoginTestData",LoginRequestBean.class);
 	}
 	
 	@DataProvider(name = "CreateJobJsonDataProvider",parallel = true)

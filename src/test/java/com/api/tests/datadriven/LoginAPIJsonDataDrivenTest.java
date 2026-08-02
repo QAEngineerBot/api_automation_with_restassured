@@ -25,7 +25,7 @@ import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInC
 @Epic("User Management")
 @Feature("Login API")
 @Listeners(com.listeners.ApiTestListener.class)
-public class LoginAPIDataDrivenTest {
+public class LoginAPIJsonDataDrivenTest {
 
 	@Story("Verify Login API with valid credentials")
 	@Description("This test verifies the login API with valid credentials and checks the response against the expected schema.")
