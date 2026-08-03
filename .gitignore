@@ -7,3 +7,4 @@ test-output/
 .DS_Store
 src/test/resources/.DS_Store
 src/test/resources/test-data/.DS_Store
+src/.DS_Store
