@@ -5,6 +5,16 @@ target/
 test-output/
 .allure
 .DS_Store
-src/test/resources/.DS_Store
-src/test/resources/test-data/.DS_Store
-src/.DS_Store
+**/.DS_Store
+# Eclipse
+.classpath
+.project
+.settings/
+
+# IntelliJ
+.idea/
+*.iml
+
+# VS Code
+.vscode/
+/bin/
