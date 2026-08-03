@@ -4,3 +4,6 @@
 target/
 test-output/
 .allure
+.DS_Store
+src/test/resources/.DS_Store
+src/test/resources/test-data/.DS_Store

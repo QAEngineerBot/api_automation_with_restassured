@@ -11,6 +11,11 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import com.poiji.bind.Poiji;
 
 public class ExcelFileReaderUtil {
+	
+	private ExcelFileReaderUtil() {
+		// private constructor to prevent instantiation
+	}
+	
 	public static <T> Iterator<T> loadExcel(String excelFilePath, String sheetName, Class<T> bean) {
 		InputStream inputStream;
 		XSSFWorkbook xssfWorkbook;

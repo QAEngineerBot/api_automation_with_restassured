@@ -53,6 +53,19 @@ public class DataProviderUtils {
 		return createJobList.iterator();
 	}
 	
+	@DataProvider(name = "CreateJobExcelDataProvider",parallel = true)
+	public static Iterator<CreateJobApiRequest> createJobApiExcelDataProvider() {
+		Iterator<CreateJobBean> createJobBean=ExcelFileReaderUtil.loadExcel("test-data/LoginCreds.xlsx","CreateJobTestData", CreateJobBean.class);
+		List<CreateJobApiRequest> createJobList = new ArrayList<CreateJobApiRequest>();
+		
+		
+		while(createJobBean.hasNext()) {
+			createJobList.add(mapper(createJobBean.next()));
+		}
+		
+		return createJobList.iterator();
+	}
+	
 	@DataProvider(name = "CreateJobFakerDataProvider",parallel = true)
 	public static Iterator<CreateJobApiRequest> createJobApiFakerDataProvider() {
 		String fakerCount = System.getProperty("fakerCount","10");
